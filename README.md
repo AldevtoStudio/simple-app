@@ -17,7 +17,7 @@ Base ✅
 
 - GET - '/' - Renders home page. ✅
 
-Authentication
+Authentication ✅
 
 - GET - '/authentication/sign-up' - Renders sign up page. ✅
 - POST - '/authentication/sign-up' - Handles account registration. ✅
