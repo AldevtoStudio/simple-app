@@ -13,7 +13,11 @@
 
 ## Route Handlers
 
+Base ✅
+
 - GET - '/' - Renders home page. ✅
+
+Authentication
 
 - GET - '/authentication/sign-up' - Renders sign up page. ✅
 - POST - '/authentication/sign-up' - Handles account registration. ✅
@@ -21,12 +25,16 @@
 - POST - '/authentication/sign-in' - Handles existing user authentication. ✅
 - POST - '/authentication/sign-out' - Handles user sign out. ✅
 
+Meow (Publications) ❌
+
 - GET - '/meow/create' - Renders meow creation page. ✅
 - POST - '/meow/create' - Handles new meow creation. ✅
 - GET - '/meow/:id' - Renders single meow page. ❌
 - GET - '/meow/:id/edit' - Renders meow edit page. ❌
 - POST - '/meow/:id/edit' - Handles edit form submission. ❌
 - POST - '/meow/:id/delete' - Handles deletion. ❌
+
+Profile ❌
 
 - GET - '/profile/:id' - Loads user with params.id from collection, renders profile page. ❌
 - GET - '/profile/:id/edit' - Loads user and renders profile edit page. ❌
