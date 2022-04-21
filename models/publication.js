@@ -19,6 +19,9 @@ const publicationSchema = new mongoose.Schema(
       // (the collections that corresponds to the
       // 'User' model).
       ref: 'User'
+    },
+    picture: {
+      type: String
     }
   },
   { timestamps: true }

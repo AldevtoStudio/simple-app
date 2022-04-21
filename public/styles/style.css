@@ -86,4 +86,27 @@ label {
   margin-bottom: 0.5em;
 }
 
+.publication-item {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+}
+
+.publication-item img:not(.profilePicture) {
+  width: 18em;
+  height: 18em;
+  margin-right: 1em;
+  object-fit: cover;
+}
+
+.publication-item .profilePicture {
+  width: 24px;
+  height: 24px;
+  object-fit: cover;
+}
+
+.publication-item small {
+  display: block;
+}
+
 /*# sourceMappingURL=style.css.map */

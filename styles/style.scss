@@ -83,3 +83,26 @@ textarea {
 label {
   margin-bottom: 0.5em;
 }
+
+.publication-item {
+  display: flex;
+  align-items: center;
+  margin: 1em 0;
+
+  img:not(.profilePicture) {
+    width: 18em;
+    height: 18em;
+    margin-right: 1em;
+    object-fit: cover;
+  }
+
+  .profilePicture {
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+  }
+
+  small {
+    display: block;
+  }
+}
