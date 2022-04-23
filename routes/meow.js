@@ -29,7 +29,7 @@ meowRouter.post('/create', routeGuard, fileUpload.single('picture'), (req, res, 
 });
 
 // GET - '/meow/:id' - Renders single meow page.
-meowRouter.get('/:id', routeGuard, (req, res, next) => {
+meowRouter.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Publication.findById(id)
     .populate('creator')
