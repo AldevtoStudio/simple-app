@@ -1,8 +1,10 @@
 <div class='publication-item'>
   <div class='publication-item'>
     <div>
-      <img class='profilePicture' src='{{publication.creator.picture}}' alt='' />
-      <strong>{{publication.creator.name}}</strong>
+      <a href='/profile/{{publication.creator._id}}'>
+        <img class='profilePicture' src='{{publication.creator.picture}}' alt='' />
+        <strong>{{publication.creator.name}}</strong>
+      </a>
       <p>{{publication.message}}</p>
       {{#if publication.picture}} <img src='{{publication.picture}}' /> {{/if}}
       <small>{{publication.createdAt}}</small>
@@ -10,7 +12,9 @@
   </div>
 </div>
 
-<a href='/meow/{{publication._id}}/edit'>Edit Meow</a>
-<form method='POST' action='/meow/{{publication._id}}/delete'>
-  <button>Delete Meow</button>
-</form>
+{{#if isOwner}}
+  <a href='/meow/{{publication._id}}/edit'>Edit Meow</a>
+  <form method='POST' action='/meow/{{publication._id}}/delete'>
+    <button>Delete Meow</button>
+  </form>
+{{/if}}

@@ -34,16 +34,23 @@ meowRouter.get('/:id', (req, res, next) => {
   Publication.findById(id)
     .populate('creator')
     .then((publication) => {
-      res.render('meow/single', { publication });
+      let isOwner = req.user && String(req.user._id) === String(publication.creator._id);
+
+      res.render('meow/single', { publication, isOwner });
     })
-    .catch((error) => next(error));
+    .catch((error) => {
+      console.log(error);
+      next(new Error('PUBLICATION_NOT_FOUND'));
+    });
 });
 
 // GET - '/meow/:id/edit' - Renders meow edit page.
 meowRouter.get('/:id/edit', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Publication.findById(id)
+  Publication.findOne({ _id: id, creator: req.user._id })
     .then((publication) => {
+      if (!publication) return Promise.reject(new Error('PUBLICATION_NOT_FOUND'));
+
       res.render('meow/edit', { publication });
     })
     .catch((error) => next(error));
@@ -55,7 +62,7 @@ meowRouter.post('/:id/edit', routeGuard, fileUpload.single('picture'), (req, res
   const { message } = req.body;
   let picture;
   if (req.file) picture = req.file.path;
-  Publication.findByIdAndUpdate(id, { message, picture })
+  Publication.findOneAndUpdate({ _id: id, creator: req.user._id }, { message, picture })
     .then(() => {
       res.redirect(`/meow/${id}`);
     })
@@ -63,9 +70,9 @@ meowRouter.post('/:id/edit', routeGuard, fileUpload.single('picture'), (req, res
 });
 
 // POST - '/meow/:id/delete' - Handles deletion.
-meowRouter.post('/:id/delete', (req, res, next) => {
+meowRouter.post('/:id/delete', routeGuard, (req, res, next) => {
   const { id } = req.params;
-  Publication.findByIdAndRemove(id)
+  Publication.findOneAndRemove({ _id: id, creator: req.user._id })
     .then(() => {
       res.redirect('/');
     })

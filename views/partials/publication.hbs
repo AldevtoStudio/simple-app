@@ -1,0 +1,9 @@
+<a href='/meow/{{_id}}' class='publication-item'>
+  <div>
+    {{#if creator.picture}} <img class='profilePicture' src='{{creator.picture}}' alt='' /> {{/if}}
+    <strong>{{creator.name}}</strong>
+    <p>{{message}}</p>
+    {{#if picture}} <img src='{{picture}}' /> {{/if}}
+    <small>{{date createdAt}}</small>
+  </div>
+</a>

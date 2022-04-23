@@ -8,8 +8,8 @@
 - Create meow - Display form which allows user to submit new "meow". ✅
 - Single meow - Allows to read single meow. Allows creator to delete or edit meow. ✅
 - Edit meow - Allows meow creator to edit single meow. ✅
-- Profile - Allows us to view single users meows. ❌
-- Profile edit - Allows to edit our profile. ❌
+- Profile - Allows us to view single users meows. ✅
+- Profile edit - Allows to edit our profile. ✅
 
 ## Route Handlers
 
@@ -34,20 +34,20 @@ Meow (Publications) ✅
 - POST - '/meow/:id/edit' - Handles edit form submission. ✅
 - POST - '/meow/:id/delete' - Handles deletion. ✅
 
-Profile ❌
+Profile ✅
 
-- GET - '/profile/:id' - Loads user with params.id from collection, renders profile page. ❌
-- GET - '/profile/:id/edit' - Loads user and renders profile edit page. ❌
-- POST - '/profile/:id/edit' - Handles profile edit form submission. ❌
+- GET - '/profile/:id' - Loads user with params.id from collection, renders profile page. ✅
+- GET - '/profile/edit' - Loads user and renders profile edit page. ✅
+- POST - '/profile/edit' - Handles profile edit form submission. ✅
 
 ## Models
 
-User ❌
+User ✅
 
 - name: String, required. ✅
 - email: String, required. ✅
 - passwordHashAndSalt: String, required. ✅
-- picture: String, default (default img url). ❌
+- picture: String, default (default img url). ✅
 
 Publication ✅
 
@@ -59,7 +59,8 @@ Publication ✅
 
 ## Wishlist
 
-- Add date formating helper to HBS. ❌
+- Only creator can edit. ❌
+- Add date formating helper to HBS. ✅
 - Like "meows" (Like model). Most liked meows would be featured. ❌
 - Sentiment analysis for "meows". If meow is negative, stop publication. ❌
 - Share button. ❌

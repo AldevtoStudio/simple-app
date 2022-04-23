@@ -13,8 +13,17 @@ const bindUserToViewLocals = require('./middleware/bind-user-to-view-locals.js')
 const baseRouter = require('./routes/base');
 const authenticationRouter = require('./routes/authentication');
 const meowRouter = require('./routes/meow');
+const profileRouter = require('./routes/profile');
+const hbs = require('hbs');
 
 const app = express();
+
+// Format dates nicely in hbs
+hbs.registerHelper('date', (value) => {
+  return `${value.toLocaleDateString()} (${value.toLocaleTimeString()})`;
+});
+
+hbs.registerPartials(path.join(__dirname, 'views/partials'));
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -25,8 +34,7 @@ app.use(
     src: path.join('styles'),
     dest: path.join(__dirname, 'public/styles'),
     prefix: '/styles',
-    outputStyle:
-      process.env.NODE_ENV === 'development' ? 'expanded' : 'compressed',
+    outputStyle: process.env.NODE_ENV === 'development' ? 'expanded' : 'compressed',
     force: process.env.NODE_ENV === 'development',
     sourceMap: process.env.NODE_ENV === 'development'
   })
@@ -55,6 +63,7 @@ app.use(bindUserToViewLocals);
 app.use('/', baseRouter);
 app.use('/authentication', authenticationRouter);
 app.use('/meow', meowRouter);
+app.use('/profile', profileRouter);
 
 // Catch missing routes and forward to error handler
 app.use((req, res, next) => {

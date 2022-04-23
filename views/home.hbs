@@ -1,13 +1,5 @@
 <h1>Meows</h1>
 {{#each publications}}
-  <a href='/meow/{{_id}}' class='publication-item'>
-    <div>
-      <img class='profilePicture' src='{{creator.picture}}' alt='' />
-      <strong>{{creator.name}}</strong>
-      <p>{{message}}</p>
-      {{#if picture}} <img src='{{picture}}' /> {{/if}}
-      <small>{{createdAt}}</small>
-    </div>
-  </a>
+  {{>publication}}
   <hr />
 {{/each}}
